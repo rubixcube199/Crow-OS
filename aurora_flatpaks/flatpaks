@@ -1,7 +1,6 @@
-app/org.mozilla.Thunderbird/x86_64/stable
-app/org.mozilla.firefox/x86_64/stable
+app/io.freetubeapp.FreeTube/x86_64/stable
+app/one.ablaze.floorp/x86_64/stable
 app/org.kde.kcalc/x86_64/stable
-app/org.kde.gwenview/x86_64/stable
 app/org.kde.kontact/x86_64/stable
 app/org.kde.okular/x86_64/stable
 app/org.kde.kweather/x86_64/stable
@@ -11,5 +10,10 @@ app/org.kde.filelight/x86_64/stable
 app/com.github.tchx84.Flatseal/x86_64/stable
 app/io.github.dvlv.boxbuddyrs/x86_64/stable
 app/io.github.flattool.Warehouse/x86_64/stable
-app/org.fedoraproject.MediaWriter/x86_64/stable
-app/io.missioncenter.MissionCenter/x86_64/stable
+app/com.discordapp.Discord/x86_64/stable
+app/io.github.shiftey.Desktop/x86_64/stable
+app/io.github.prateekmedia.appimagepool/x86_64/stable
+app/io.github.giantpinkrobots.flatsweep/x86_64/stable
+app/org.telegram.desktop/x86_64/stable
+app/dev.vencord.Vesktop/x86_64/stable
+app/com.usebottles.bottles/x86_64/stable
