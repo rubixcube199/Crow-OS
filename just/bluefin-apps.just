@@ -89,7 +89,7 @@ install-jetbrains-toolbox:
 
 alias atuin := install-atuin
 
-# Add atuin
+# Add atuinsr/
 install-atuin:
     #!/usr/bin/bash 
     shell=$(basename $SHELL) 
@@ -120,3 +120,11 @@ install-incus:
         echo "Run \"just devmode\" to turn on Developer mode."
         exit
     fi
+
+# Install Google Chrome
+install-google-chrome
+    /usr/libexec/install-google-chrome.sh
+
+# Enable LUKS Autodecrypt
+enable-luks-autodecrypt
+    /usr/libexec/enable-luks-autodecrypt.sh
