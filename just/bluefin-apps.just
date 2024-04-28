@@ -121,7 +121,7 @@ install-incus:
         exit
     fi
 
-# Install Google Chrome
+# Install Google-Chrome
 install-google-chrome
     /usr/libexec/install-google-chrome.sh
 
