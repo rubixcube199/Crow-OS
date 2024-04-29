@@ -152,6 +152,16 @@ jobs:
           mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
           echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT
 
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+              name: bluefin-opinionated-preview
+              path: ${ISO_UPLOAD_DIR} 
+              if-no-files-found: warn
+              retention-days: 60
+              compression-level: 0
+              overwrite: false
+
       - name: Create a GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
