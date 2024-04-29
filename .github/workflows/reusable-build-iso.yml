@@ -156,27 +156,8 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
               name: bluefin-opinionated-preview
-              path: ${ISO_UPLOAD_DIR} 
-              if-no-files-found: warn
+              path: /home/runner/work/bluefin/bluefin/upload/
+              if-no-files-found: error
               retention-days: 60
               compression-level: 0
               overwrite: false
-
-      - name: Create a GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-           cd $GITHUB_WORKSPACE
-           git clone https://github.com/rubixcube199/bluefin
-           cd bluefin
-           gh release create bluefin-opinionated-preview-"$(date +%Y.%m.%d)" --generate-notes
-      
-      - name: Upload to GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cd $GITHUB_WORKSPACE
-          cd bluefin
-          for f in $(find ${ISO_UPLOAD_DIR} -name '*.iso*'); do
-              gh release upload bluefin-opinionated-preview-"$(date +%Y.%m.%d)" $f --clobber
-          done
