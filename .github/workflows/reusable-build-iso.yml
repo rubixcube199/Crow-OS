@@ -152,15 +152,21 @@ jobs:
           mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
           echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT
 
-      - name: Upload ISOs and Checksum to Job Artifacts
-        if: github.ref_name == 'testing'
-        #if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ steps.build.outputs.iso_name }}
-          path: ${{ steps.upload-directory.outputs.iso-upload-dir }}
-          if-no-files-found: error
-          retention-days: 0
-          compression-level: 0
-          overwrite: true
-
+      - name: Create a GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+           cd $GITHUB_WORKSPACE
+           git clone https://github.com/rubixcube199/bluefin
+           cd bluefin
+           gh release create bluefin-opinionated-preview-"$(date +%Y.%m.%d)" --generate-notes
+      
+      - name: Upload to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd $GITHUB_WORKSPACE
+          cd bluefin
+          for f in $(find ${ISO_UPLOAD_DIR} -name '*.iso*'); do
+              gh release upload bluefin-opinionated-preview-"$(date +%Y.%m.%d)" $f --clobber
+          done
