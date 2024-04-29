@@ -130,7 +130,7 @@ jobs:
         with:
           arch: x86_64
           image_name: ${{ env.IMAGE_NAME }}
-          image_repo: ghcr.io/rubixcube199
+          image_repo: ghcr.io/ublue-os
           variant: ${{ env.VARIANT }}
           version: ${{ matrix.fedora_version }}
           image_tag: ${{ steps.generate-tag.outputs.tag }}
